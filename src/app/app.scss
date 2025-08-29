@@ -1,0 +1,192 @@
+/* --- Variables y Estilos Base --- */
+:host {
+    display: block;
+    // Usamos una fuente monoespaciada como en la imagen
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.page-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; // Ocupa toda la altura de la pantalla
+    background-color: #000;
+    color: #d3d3d3; // Un blanco no tan puro
+    overflow: hidden; // Evita barras de scroll si algo se sale
+}
+
+/* --- 1. EL MARCO BLANCO --- */
+/* Usamos un pseudo-elemento para crear el marco sin añadir más HTML. */
+.page-container::before {
+    content: '';
+    position: fixed; // Se queda fijo aunque haya scroll
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    pointer-events: none; // Permite hacer clic a través de él
+}
+
+/* --- 2. EL FONDO DE RUIDO ANIMADO --- */
+/* Usamos otro pseudo-elemento para la capa de ruido. */
+.page-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    // Usamos una imagen de ruido (en base64 para no depender de un archivo externo)
+    // y la movemos ligeramente para crear el efecto de "estática".
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39sbGxvb29/f39zc3N1dXWHh4dFRUVsbW1rbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXsbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXsbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXrbW1FRUXf3995eXlFRUXsbW1FRUXf399DQyKAAAAXXRSTlMAQObYZgAAAZNJREFUeNrt1_VqAkEQhOFkK7CJkCaAUsEaQNAgdmAjYkM2KrsP4/2/j+/g5u5w7r0f5n5mZkXNKgD4/V3fXRAQBQaL3C8GEYkIFIbC6SgCkSAECALJQBIRCJiMQhQkBE2kIBkEARGIQwQCBCJQSgygQkAEGAiEYkERgQTiHgoQYjEIEAEBiEQgBIIhOIASFASEAiCQiEQgBIIhAlYgBIAhYBCICsQgEIAhCBIMhEAE4hQAEQwQCBCIQMhIEaBCEAQUhEIFkSgECAJiEARhEAJgQhCBABiE4AQYhIEaBCCExiFgiAICLCAQhAEBiEQgQAIhEAEQiAQgQAIhEAgCQgE4ggEBEEAgQggEhCIQhCIAgQiEIAgQhAIhCAQhEAgQhAIhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAEhEAgQhAERiAxwz/gq/wB5r0d/k8iQW0AAAAASUVORK5CYII=');
+    opacity: 0.04;
+    pointer-events: none;
+    animation: grain 0.8s steps(10) infinite;
+}
+
+// Animación que mueve el fondo
+@keyframes grain {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-1%, -1%);
+    }
+
+    30% {
+        transform: translate(1%, -2%);
+    }
+
+    50% {
+        transform: translate(-1%, 2%);
+    }
+
+    70% {
+        transform: translate(1%, 1%);
+    }
+
+    90% {
+        transform: translate(-1%, 1%);
+    }
+}
+
+
+/* --- 3. LA ESFERA DIFUMINADA --- */
+/* Se crea en el body para que quede detrás de todo.
+   Esto requiere añadir una clase al body, por ejemplo, en index.html
+   o manipularlo con TypeScript si fuera necesario, pero para estático
+   es más fácil usar otro pseudo-elemento en el contenedor principal.
+   Como ya usamos ::before y ::after, lo añadiremos al body directamente.
+   Si no puedes editar el body, puedes añadir otro div wrapper. */
+body {
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 150vw;
+    height: 150vh;
+    background: radial-gradient(circle at center, rgba(100, 100, 100, 0.15) 0%, transparent 40%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+/* --- 4. POSICIONAMIENTO DEL TEXTO --- */
+// Usamos position: absolute para colocar cada bloque de texto
+// en su lugar exacto, relativo a .page-container.
+
+.top-left {
+    position: absolute;
+    top: 50px;
+    left: 70px;
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin: 0;
+    }
+
+    p {
+        font-size: 0.9rem;
+        margin: 5px 0 0;
+    }
+}
+
+.side-nav {
+    position: absolute;
+    top: 150px;
+    left: 70px;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: 10px;
+
+            // El punto se simula con un pseudo-elemento
+            &::before {
+                content: '•';
+                margin-right: 10px;
+                color: transparent; // Oculto por defecto
+            }
+
+            &.active::before {
+                color: #d3d3d3; // Visible en el elemento activo
+            }
+
+            a {
+                text-decoration: none;
+                color: #d3d3d3;
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+.main-text {
+    position: absolute;
+    bottom: 120px;
+    right: 70px;
+    text-align: right;
+
+    p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+}
+
+.footer-info {
+    position: absolute;
+    bottom: 35px;
+    left: 70px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+
+    .copyright {
+        // Añade el texto vertical a su lado
+        position: relative;
+        padding-left: 50px; // Espacio para el texto vertical
+    }
+
+    .theme-options {
+        // Texto vertical
+        position: absolute;
+        bottom: 50px; // Lo subimos un poco
+        left: -20px;
+        transform: rotate(-90deg);
+        transform-origin: left bottom;
+        white-space: nowrap;
+    }
+}
