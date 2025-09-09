@@ -1,1 +1,52 @@
-<p>Aqui sera un carrusel de tecnologias que se usar</p>
+<!-- skills (tecnologías) -->
+<section class="skills-wrap">
+
+  <div class="carousels">
+    <!-- Columna: Domino -->
+    <section class="carousel-col">
+      <h3>Domino</h3>
+      <div class="carousel">
+        <ul class="track">
+          <!-- lista + duplicado para loop perfecto -->
+          <li class="card" *ngFor="let t of dominadas">
+            <img [src]="t.logo" [alt]="t.nombre">
+            <div class="info">
+              <h4>{{ t.nombre }}</h4>
+              <p>{{ t.desc }}</p>
+            </div>
+          </li>
+          <li class="card" *ngFor="let t of dominadas">
+            <img [src]="t.logo" [alt]="t.nombre">
+            <div class="info">
+              <h4>{{ t.nombre }}</h4>
+              <p>{{ t.desc }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Columna: Conozco -->
+    <section class="carousel-col">
+      <h3>Conozco</h3>
+      <div class="carousel">
+        <ul class="track track--slow">
+          <li class="card" *ngFor="let t of conocidas">
+            <img [src]="t.logo" [alt]="t.nombre">
+            <div class="info">
+              <h4>{{ t.nombre }}</h4>
+              <p>{{ t.desc }}</p>
+            </div>
+          </li>
+          <li class="card" *ngFor="let t of conocidas">
+            <img [src]="t.logo" [alt]="t.nombre">
+            <div class="info">
+              <h4>{{ t.nombre }}</h4>
+              <p>{{ t.desc }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</section>
