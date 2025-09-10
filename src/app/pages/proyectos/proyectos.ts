@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     selector: 'app-proyectos',
     imports: [CommonModule],
-    templateUrl: './proyectos.html'/* ,
-  styleUrls: ['./proyectos.scss'] */
+    templateUrl: './proyectos.html',
+  styleUrls: ['./proyectos.scss']
 })
 export class ProyectosComponent {
     // Puedes dejarlo vacío o listar proyectos luego

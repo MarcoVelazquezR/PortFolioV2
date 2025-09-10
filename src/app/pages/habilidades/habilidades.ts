@@ -74,8 +74,14 @@ export class HabilidadesComponent {
 
   conocidas = [
     {
-      nombre: 'PHP/Laravel', logo: 'assets/tech/laravel.png',
-      desc: 'APIs CRUD y plantillas Blade sencillas.'
+      nombre: 'Laravel',
+      logo: 'assets/tech/laravel.png',
+      desc: 'Rutas, controladores, Eloquent básico y vistas Blade.'
+    },
+    {
+      nombre: 'PHP',
+      logo: 'assets/tech/php.png',
+      desc: 'CRUDs sencillos, Composer, PSR-4, cURL/PDO y plantillas básicas.'
     },
     {
       nombre: 'React', logo: 'assets/tech/react.png',

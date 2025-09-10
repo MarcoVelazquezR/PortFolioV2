@@ -1,10 +1,11 @@
+:root {
+    --gap: 10px;
+}
+
 .skills-wrap {
     margin-left: auto;
-    /* ✅ clave: pega a la derecha */
     width: clamp(560px, 50vw, 780px);
-    /* ancho cómodo del panel derecho */
     padding-right: 18px;
-    /* separa del borde del marco */
 }
 
 .skills-title {
@@ -44,6 +45,9 @@
     background: rgba(0, 0, 0, .35);
     backdrop-filter: blur(2px);
 
+    /* padding solo horizontal; el vertical lo dará el UL */
+    padding: 0 16px;
+
     -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
 }
@@ -51,10 +55,16 @@
 .track {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 16px;
+    gap: var(--gap);
+
+    /* simetría: el top/bottom tienen el mismo espacio que el gap entre ítems */
+    padding-block: var(--gap);
+    padding-inline: 0;
+
     margin: 0;
     list-style: none;
+
+    /* ¡clave! */
     animation: scrollY 100s linear infinite;
     will-change: transform;
 }
@@ -68,14 +78,15 @@
 }
 
 @keyframes scrollY {
-    0% {
-        transform: translateY(0);
+    from {
+        transform: translate3d(0, 0, 0);
     }
 
-    100% {
-        transform: translateY(-50%);
+    to {
+        transform: translate3d(0, -50%, 0);
     }
 
+    /* mitad exacta (porque la lista está duplicada) */
 }
 
 .card {
@@ -101,7 +112,6 @@
     height: 52px;
     object-fit: contain;
     border-radius: 8px;
-    background: rgba(255, 255, 255, .04);
     padding: 6px;
 }
 

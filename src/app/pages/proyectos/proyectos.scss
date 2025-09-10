@@ -1,0 +1,75 @@
+.xp-section {
+    color: #fff;
+}
+
+.xp-grid {
+    max-width: 800px;
+    margin-left: auto;
+    padding: 24px 16px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "xp"
+        "p1"
+        "p2";
+}
+
+/* En pantallas medianas+ muestra 1 arriba y 2 abajo */
+@media (min-width: 800px) {
+    .xp-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "xp xp"
+            "p1 p2";
+    }
+}
+
+.card {
+    border: 1px solid rgba(255, 255, 255, 0.212);
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(2px);
+    padding: 18px 16px;
+    border-radius: 10px;
+    line-height: 1.55;
+    transition: transform .25s ease, border-color .25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #fff;
+}
+
+.xp-card {
+    grid-area: xp;
+}
+
+.xp-card header h3 {
+    margin: 0 0 .25rem;
+    letter-spacing: .5px;
+}
+
+.xp-card .muted {
+    opacity: .7;
+    font-size: .95rem;
+    margin: 0 0 .75rem;
+}
+
+.proj-card:nth-of-type(2) {
+    grid-area: p1;
+}
+
+.proj-card:nth-of-type(3) {
+    grid-area: p2;
+}
+
+.proj-card header h4 {
+    margin: 0 0 .25rem;
+    letter-spacing: .4px;
+}
+
+.muted {
+    opacity: .7;
+    font-size: .92rem;
+    margin: 0;
+}
