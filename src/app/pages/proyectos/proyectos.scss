@@ -5,7 +5,8 @@
 .xp-grid {
     max-width: 800px;
     margin-left: auto;
-    padding: 24px 16px;
+    padding-right: 16px;
+    padding-left: 16px;
     display: grid;
     gap: 15px;
     grid-template-columns: 1fr;
