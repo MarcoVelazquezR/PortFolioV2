@@ -7,31 +7,23 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* Alinea los elementos arriba */
     align-items: center;
-    /* Centra los elementos horizontalmente */
     width: 100%;
-    min-height: 100vh;
-    /* Usa min-height para que se expanda */
+    min-height: 120vh;
     background-color: #000;
     color: #d3d3d3;
-    overflow-x: hidden;
-    /* Evita el scroll horizontal */
+    overflow: clip;
     padding: 25px;
-    /* Mantiene el borde de 25px */
     box-sizing: border-box;
-    /* Incluye padding en el ancho */
 }
 
-/* Pseudo-elementos y animaciones que tenías, sin cambios */
 .page-container::before {
     content: '';
     position: fixed;
-    top: 5vw;
-    /* Cambiamos a unidades relativas */
-    left: 5vw;
-    right: 5vw;
-    bottom: 5vw;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     border: 1px solid rgba(255, 255, 255, 0.4);
     pointer-events: none;
 }
@@ -39,9 +31,9 @@
 .page-container::after {
     content: '';
     position: absolute;
-    inset: -8%;
+    inset: 0;
     background-image: url('../assets/img/fondo.jpg');
-    background-size: cover;
+    background-size: 120% 120%;
     background-position: center;
     opacity: 0.04;
     pointer-events: none;
@@ -52,23 +44,15 @@
 
 @keyframes orbit-rotate {
     0% {
-        transform: translate(-1.5%, -1.5%) rotate(-2deg) scale(1.06);
-    }
-
-    25% {
-        transform: translate(2.0%, -1.0%) rotate(-0.5deg) scale(1.06);
+        transform: rotate(-2deg) scale(1.04);
     }
 
     50% {
-        transform: translate(1.5%, 1.5%) rotate(2deg) scale(1.06);
-    }
-
-    75% {
-        transform: translate(-2.0%, 1.0%) rotate(0.5deg) scale(1.06);
+        transform: rotate(2deg) scale(1.04);
     }
 
     100% {
-        transform: translate(-1.5%, -1.5%) rotate(-2deg) scale(1.06);
+        transform: rotate(-2deg) scale(1.04);
     }
 }
 
@@ -78,20 +62,13 @@ body {
 
 body::before {
     content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 150vw;
-    height: 150vh;
+    position: fixed;
+    inset: 0;
     background: radial-gradient(circle at center, rgba(100, 100, 100, 0.15) 0%, transparent 40%);
     z-index: 0;
     pointer-events: none;
 }
 
-/*
-* AHORA USAMOS FLEXBOX Y MEDIAS QUERIES
-* POR DEFECTO, PARA MÓVILES, LOS ELEMENTOS SE APILAN VERTICALMENTE
-*/
 
 .top-left {
     margin-bottom: 20px;
@@ -118,7 +95,6 @@ body::before {
         margin: 0;
         display: flex;
         flex-direction: column;
-        /* Apila los elementos de la lista verticalmente */
         align-items: center;
 
         li {
@@ -160,36 +136,29 @@ body::before {
     flex-direction: column;
     align-items: center;
     margin-top: auto;
-    /* Empuja el footer hacia abajo */
 
     .copyright {
         position: relative;
         margin-bottom: 10px;
-        /* Ajusta el margen para el diseño vertical */
     }
 
     .theme-options {
         position: relative;
         transform: none;
-        /* Desactiva la rotación en móviles */
         margin-bottom: 10px;
     }
 }
 
 @media (min-width: 768px) {
-    body {
-        overflow: hidden;
-    }
-
     .page-container {
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
+        min-height: 100dvh;
     }
 
     .page-container::before {
         top: 25px;
-        /* Vuelven los valores fijos para escritorio */
         left: 25px;
         right: 25px;
         bottom: 25px;
@@ -205,12 +174,11 @@ body::before {
         position: absolute;
         top: 150px;
         left: 70px;
+    }
 
-        ul {
-            flex-direction: column;
-            /* Vuelve a apilar las opciones de menú verticalmente */
-            align-items: flex-start;
-        }
+    .side-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .main-text {
@@ -225,8 +193,8 @@ body::before {
         bottom: 35px;
         left: 45px;
         flex-direction: row;
-        /* Vuelve a la disposición en fila */
         align-items: center;
+
 
         .copyright {
             margin-bottom: -40px;
