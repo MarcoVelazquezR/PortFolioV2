@@ -5,31 +5,25 @@ body {
     width: 100%;
     height: 100%;
     -webkit-user-select: none;
-    /* Safari/Chrome */
     overflow: hidden;
     -moz-user-select: none;
-    /* Firefox */
     -ms-user-select: none;
-    /* IE/Edge antiguo */
     user-select: none;
-
-    /* iOS: desactiva menú de copiar al mantener pulsado */
     -webkit-touch-callout: none;
 }
 
-/* Móviles: el scroll vive en el wrapper */
 @media (max-width: 767px) {
   html, body {
-    overflow: hidden; /* bloquea scroll global */
+    overflow: hidden;
     height: 100dvh;
   }
 
   .viewport-scroll {
-    position: fixed;   /* ocupa el viewport completo */
+    position: fixed;
     inset: 0;
-    overflow-y: auto;  /* ✅ scroll solo vertical aquí */
-    overflow-x: clip;  /* ❌ sin scroll horizontal */
-    -webkit-overflow-scrolling: touch; /* iOS suave */
+    overflow-y: auto;  
+    overflow-x: clip;  
+    -webkit-overflow-scrolling: touch; 
   }
 
   .page-container {
